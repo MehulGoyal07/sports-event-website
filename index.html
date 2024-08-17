@@ -6,15 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css" />
     <title>Marathon website</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JGX90X8Y7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7JGX90X8Y7');
+    </script>
 </head>
 
 <body>
     <nav>
         <div class="nav__header">
             <div class="logo nav__logo">
-                <a href="#">RunFor<span>Wagholi</span></a>
+                <a href="#">RunFor<span style="color: green;">Wagholi</span></a>
             </div>
             <div class="nav__menu__btn" id="menu-btn">
                 <span><i class="ri-menu-line"></i></span>
@@ -26,6 +39,7 @@
             <li><a href="#chef">Timings</a></li>
             <li><a href="#map">Map</a></li>
             <li><a href="#contact">Register Now</a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=919834103430&text=Hello%20I%20want%20to%20know%20more%20about%20your%20event">Contact Us</a></li>
         </ul>
     </nav>
     <header class="section__container header__container" id="home">
@@ -33,10 +47,10 @@
             <img src="assets/header.png" alt="header" />
         </div>
         <div class="header__content">
-            <h1>RUN FOR WAGHOLI 2024 WATER <span>| TRAFFIC | DRAINAGE</span>.</h1>
+            <h1>RUN FOR WAGHOLI 2024 <span>WATER | </span><span style="color: #06038D;">TRAFFIC|</span> <span style="color: #046A38;">DRAINAGE</span>.</h1>
             <p class="section__description">
-                Join us for an unforgettable experience featuring a special birthday celebration for MLA Mr. Ashok Pawar, exclusive appearances by celebrity guests and VIPs, extensive media coverage with drone cameras capturing every moment, a dedicated green room for
-                women participants, and thrilling entertainment segments including Zumba and Arabic performances.
+                Welcome to the Run for Wagholi Marathon, an inspiring community event dedicated to addressing critical local issues and fostering a spirit of togetherness. Scheduled for August 25, 2024, this marathon is more than just a race—it's a movement to tackle
+                some of Wagholi's most pressing challenges.
             </p>
             <div class="header__btn">
                 <button class="btn"><a href="https://chat.whatsapp.com/KOedJcFePH08QLmh1cKMhT">Join Whatsapp</a></button>
@@ -92,10 +106,10 @@
                         <span><i class="ri-checkbox-fill"></i></span> 5:00 AM: Arrival & ID Card Distribution at Reception Desk
                     </li>
                     <li>
-                        <span><i class="ri-checkbox-fill"></i></span> 7:00 AM: Marathon Flag-Off Ceremony
+                        <span><i class="ri-checkbox-fill"></i></span> 6:00 AM: Zumba Sessions
                     </li>
                     <li>
-                        <span><i class="ri-checkbox-fill"></i></span> 6:00 AM: Zumba Sessions
+                        <span><i class="ri-checkbox-fill"></i></span> 7:00 AM: Marathon Flag-Off Ceremony
                     </li>
                     <li>
                         <span><i class="ri-checkbox-fill"></i></span> 10:00 AM: Prize Distribution & Breakfast for VIPs
@@ -169,7 +183,7 @@
         <div class="container">
             <!-- Left: Form Section -->
             <div class="form-container">
-                <h2>Register for the 5KM Marathon</h2>
+                <h2 style="text-align: center;">Register for the 3KM Marathon</h2>
                 <form id="registration-form" action="" method="POST">
 
                     <label for="name">Full Name</label>
@@ -181,8 +195,8 @@
                     <label for="contact">Contact Number</label>
                     <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    <label for="dob">DOB</label>
+                    <input type="date" id="dob" name="dob" placeholder="Enter your DOB" required>
 
                     <label for="tshirt-size">T-Shirt Size</label>
                     <select id="tshirt-size" name="tshirt-size" required>
@@ -192,12 +206,15 @@
                         <option value="L">Large (L)</option>
                         <option value="XL">Extra Large (XL)</option>
                         <option value="XXL">Double Extra Large (XXL)</option>
+                        <option value="XXXL">Triple Extra Large (XXL)</option>
                     </select>
 
                     <label for="category">Preferred Category</label>
-                    <input type="text" id="category" name="category" value="5KM Run" readonly>
+                    <input type="text" id="category" name="category" value="3KM Run" readonly>
 
-                    <button type="submit" class="submit-btn">Register Now</button>
+                    <!-- <button type="submit" class="submit-btn">Run</button> -->
+                    <button type="submit" class="submit-btn">Run for Wagholi</button>
+                    <p id="success-message" class="success-message">Successfully registered! Your certificate is being downloaded.</p>
                 </form>
             </div>
 
@@ -214,9 +231,9 @@
         <div class="section__container footer__container">
             <div class="footer__col">
                 <div class="logo footer__logo">
-                    <a href="#">RunFor<span>Wagholi</span></a>
+                    <a href="#">#RunFor<span style="color: green;">Wagholi</span></a>
                 </div>
-                <p class="section__description">
+                <p class="section__description" style="color:black;">
                     Get ready for an exciting marathon event on 25th August 2024, starting promptly at 6:00 AM in the vibrant locale of Wagholi, Maharashtra.
                 </p>
             </div>
@@ -226,21 +243,32 @@
                     <li>Complete crowd management by event organizers.</li>
                     <li>Security guards at the VIP areas, entry/exit points, and along the marathon route.
                     </li>
-                    <li>Proper permissions have been obtained for the event.</li>
+                    <!-- <li>Proper permissions have been obtained for the event.</li> -->
                 </ul>
             </div>
             <div class="footer__col">
-                <h4>Sponsorship & Media</h4>
+                <h4>Event maneged by</h4>
                 <ul class="footer__links">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto repudiandae id eius fugiat aperiam.</p>
+                    <p><span style="color: #db6e09; font-weight: bold;">Kuber Events</span></p>
                 </ul>
             </div>
             <div class="footer__col">
                 <h4>Contact Information</h4>
                 <ul class="footer__links">
                     <li>Email: Runforwagholi@gmail.com</li>
-                    <li>Phone:</li>
+                    <li>Phone: +91 9834103430</li>
                     <li>Address: Wagholi, Maharashtra</li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Follow Us</h4>
+                <ul class="footer__social">
+                    <li><a href="https://www.facebook.com/profile.php?id=61564325945770" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://www.instagram.com/runforwagholi/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://x.com/ForWagholi11997" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/run-for-wagholi/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://api.whatsapp.com/send?phone=919876543210" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                    <li><a href="https://www.youtube.com/@RunForWagholi" target="_blank"><i class="fab fa-youtube"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -253,8 +281,8 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
     <script>
-        // JavaScript to send form data to Google Sheets
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzvA34wDzpuqUg4nmJRehxAncBDAmKsR_68v8fk_eE1HdDR0cdIvwngs_91cceeKspE/exec';
+        // JavaScript to send form data to Google Sheets https://script.google.com/macros/s/AKfycbzvA34wDzpuqUg4nmJRehxAncBDAmKsR_68v8fk_eE1HdDR0cdIvwngs_91cceeKspE/exec
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwNCYYavGeLyfR_L1vx1LqwFKO1gyXvpemkcwYwzIdb3R-SeKhqTc9XP2PgazrL4vH4/exec';
         const form = document.forms['registration-form'];
 
         form.addEventListener('submit', e => {
@@ -265,6 +293,121 @@
                 })
                 .then(response => alert('Registration successful!'))
                 .catch(error => console.error('Error!', error.message));
+        });
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+
+            // Trigger certificate download
+            downloadCertificate();
+        });
+
+        function downloadCertificate() {
+            // Path to your predefined PDF certificate
+            const certificateUrl = './assets/certificate.pdf';
+
+            // Create an invisible link element and click it to download the PDF
+            const link = document.createElement('a');
+            link.href = certificateUrl;
+            link.download = 'certificate.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+    <!-- <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzvA34wDzpuqUg4nmJRehxAncBDAmKsR_68v8fk_eE1HdDR0cdIvwngs_91cceeKspE/exec';
+        const form = document.forms['registration-form'];
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => alert('Registration successful!'))
+                .catch(error => console.error('Error!', error.message));
+        });
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+
+            // Trigger certificate download
+            downloadCertificate();
+        });
+
+        function downloadCertificate() {
+            // Path to your predefined PDF certificate
+            const certificateUrl = './assets/certificate.pdf';
+
+            // Create an invisible link element and click it to download the PDF
+            const link = document.createElement('a');
+            link.href = certificateUrl;
+            link.download = 'certificate.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script> -->
+    <!-- <script>
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Extract form data
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            // Send data to Google Sheets
+            fetch('https://script.google.com/macros/s/AKfycbwNCYYavGeLyfR_L1vx1LqwFKO1gyXvpemkcwYwzIdb3R-SeKhqTc9XP2PgazrL4vH4/exec', { // Replace with your Web App URL
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(() => {
+                    // Show success message
+                    document.getElementById('success-message').style.display = 'block';
+                    // Trigger certificate download
+                    downloadCertificate();
+                })
+                .catch(error => console.error('Error:', error));
+        });
+
+        function downloadCertificate() {
+            const certificateUrl = './assets/certificate.pdf'; // Replace with the URL of your certificate PDF
+            const link = document.createElement('a');
+            link.href = certificateUrl;
+            link.download = 'certificate.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script> -->
+    <script>
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var formData = new FormData(this);
+            var data = {};
+            formData.forEach((value, key) => data[key] = value);
+
+            fetch('YOUR_WEB_APP_URL', {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('success-message').style.display = 'block';
+                    window.open(data.certificateUrl, '_blank'); // Open the certificate URL in a new tab
+                })
+                .catch(error => console.error('Error:', error));
         });
     </script>
 </body>

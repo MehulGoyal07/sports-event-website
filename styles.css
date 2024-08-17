@@ -192,7 +192,7 @@ nav {
 }
 
 .special__card {
-    background-color: #e0c9b3;
+    background-color: #ededed;
     padding: 1rem;
     text-align: center;
     border-radius: 2rem;
@@ -403,15 +403,23 @@ nav {
 }
 
 .chef__list li:nth-child(1) span {
-    color: #62b15c;
+    color: #FF671F;
 }
 
 .chef__list li:nth-child(2) span {
-    color: #ff3e67;
+    color: #FF671F;
 }
 
 .chef__list li:nth-child(3) span {
-    color: #185adb;
+    color: rgb(199, 197, 197);
+}
+
+.chef__list li:nth-child(4) span {
+    color: #046A38;
+}
+
+.chef__list li:nth-child(5) span {
+    color: #046A38;
 }
 
 .client__container {
@@ -473,6 +481,28 @@ nav {
 
 .swiper-pagination-bullet-active {
     background-color: var(--primary-color);
+}
+
+.footer__social {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.footer__social li {
+    display: inline-block;
+}
+
+.footer__social li a {
+    font-size: 20px;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer__social li a:hover {
+    color: #db6e09;
 }
 
 .footer {
@@ -714,7 +744,7 @@ label {
 input[type="text"],
 input[type="number"],
 input[type="tel"],
-input[type="email"],
+input[type="date"],
 select {
     padding: 12px;
     margin-bottom: 20px;
@@ -741,6 +771,13 @@ button.submit-btn {
     font-size: 16px;
     font-weight: 600;
     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.success-message {
+    display: none;
+    color: #db6e09;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
 button.submit-btn:hover {
