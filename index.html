@@ -141,44 +141,6 @@
         </div>
     </section>
 
-    <!-- <section class="section__container banner__container">
-        <div class="banner__card">
-            <span class="banner__icon"><i class="ri-bowl-fill"></i></span>
-            <h4>Order Your Food</h4>
-            <p>
-                Seamlessly place your food orders online with just a few clicks. Enjoy convenience and efficiency as you select from our diverse menu of delectable dishes.
-            </p>
-            <a href="#">
-          Read more
-          <span><i class="ri-arrow-right-line"></i></span>
-        </a>
-        </div>
-        <div class="banner__card">
-            <span class="banner__icon"><i class="ri-truck-fill"></i></span>
-            <h4>Pick Your Food</h4>
-            <p>
-                Customize your dining experience by choosing from a tantalizing array of options. For savory, sweet, or in between craving, find the perfect meal to satisfy your appetite.
-            </p>
-            <a href="#">
-          Read more
-          <span><i class="ri-arrow-right-line"></i></span>
-        </a>
-        </div>
-        <div class="banner__card">
-            <span class="banner__icon"><i class="ri-star-smile-fill"></i></span>
-            <h4>Enjoy Your Food</h4>
-            <p>
-                Sit back, relax, and savor the flavors as your meticulously prepared meal arrives. Delight in the deliciousness of every bite, knowing that your satisfaction is our top priority.
-            </p>
-            <a href="#">
-          Read more
-          <span><i class="ri-arrow-right-line"></i></span>
-        </a>
-        </div>
-    </section> -->
-
-
-
     <section class="registration-section">
         <div class="container">
             <!-- Left: Form Section -->
@@ -190,7 +152,7 @@
                     <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
                     <label for="age">Age</label>
-                    <input type="number" id="age" name="age" placeholder="Enter your age" min="10" max="99" required>
+                    <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="99" required>
 
                     <label for="contact">Contact Number</label>
                     <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
@@ -281,7 +243,6 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
     <script>
-        // JavaScript to send form data to Google Sheets https://script.google.com/macros/s/AKfycbzvA34wDzpuqUg4nmJRehxAncBDAmKsR_68v8fk_eE1HdDR0cdIvwngs_91cceeKspE/exec
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwNCYYavGeLyfR_L1vx1LqwFKO1gyXvpemkcwYwzIdb3R-SeKhqTc9XP2PgazrL4vH4/exec';
         const form = document.forms['registration-form'];
 
@@ -316,99 +277,6 @@
             link.click();
             document.body.removeChild(link);
         }
-    </script>
-    <!-- <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzvA34wDzpuqUg4nmJRehxAncBDAmKsR_68v8fk_eE1HdDR0cdIvwngs_91cceeKspE/exec';
-        const form = document.forms['registration-form'];
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(scriptURL, {
-                    method: 'POST',
-                    body: new FormData(form)
-                })
-                .then(response => alert('Registration successful!'))
-                .catch(error => console.error('Error!', error.message));
-        });
-        document.getElementById('registration-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-
-            // Show success message
-            document.getElementById('success-message').style.display = 'block';
-
-            // Trigger certificate download
-            downloadCertificate();
-        });
-
-        function downloadCertificate() {
-            // Path to your predefined PDF certificate
-            const certificateUrl = './assets/certificate.pdf';
-
-            // Create an invisible link element and click it to download the PDF
-            const link = document.createElement('a');
-            link.href = certificateUrl;
-            link.download = 'certificate.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    </script> -->
-    <!-- <script>
-        document.getElementById('registration-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
-
-            // Extract form data
-            const formData = new FormData(event.target);
-            const data = {};
-            formData.forEach((value, key) => data[key] = value);
-
-            // Send data to Google Sheets
-            fetch('https://script.google.com/macros/s/AKfycbwNCYYavGeLyfR_L1vx1LqwFKO1gyXvpemkcwYwzIdb3R-SeKhqTc9XP2PgazrL4vH4/exec', { // Replace with your Web App URL
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                })
-                .then(response => response.json())
-                .then(() => {
-                    // Show success message
-                    document.getElementById('success-message').style.display = 'block';
-                    // Trigger certificate download
-                    downloadCertificate();
-                })
-                .catch(error => console.error('Error:', error));
-        });
-
-        function downloadCertificate() {
-            const certificateUrl = './assets/certificate.pdf'; // Replace with the URL of your certificate PDF
-            const link = document.createElement('a');
-            link.href = certificateUrl;
-            link.download = 'certificate.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-    </script> -->
-    <script>
-        document.getElementById('registration-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            var formData = new FormData(this);
-            var data = {};
-            formData.forEach((value, key) => data[key] = value);
-
-            fetch('YOUR_WEB_APP_URL', {
-                    method: 'POST',
-                    contentType: 'application/json',
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('success-message').style.display = 'block';
-                    window.open(data.certificateUrl, '_blank'); // Open the certificate URL in a new tab
-                })
-                .catch(error => console.error('Error:', error));
-        });
     </script>
 </body>
 
