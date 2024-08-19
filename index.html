@@ -73,8 +73,8 @@
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-                    <label for="age">Age</label>
-                    <input type="number" id="age" name="age" placeholder="Enter your age" min="1" max="99" required>
+                    <label for="age">Enter you Address</label>
+                    <input type="text" id="age" name="age" placeholder="Enter your Address" required>
 
                     <label for="contact">Contact Number</label>
                     <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
@@ -245,41 +245,42 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwNCYYavGeLyfR_L1vx1LqwFKO1gyXvpemkcwYwzIdb3R-SeKhqTc9XP2PgazrL4vH4/exec';
-        const form = document.forms['registration-form'];
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            fetch(scriptURL, {
-                    method: 'POST',
-                    body: new FormData(form)
-                })
-                .then(response => alert('Registration successful!'))
-                .catch(error => console.error('Error!', error.message));
-        });
         document.getElementById('registration-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault(); // Prevent form from submitting the traditional way
 
-            // Show success message
-            document.getElementById('success-message').style.display = 'block';
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                age: formData.get('age'),
+                contact: formData.get('contact'),
+                dob: formData.get('dob'),
+                'tshirt-size': formData.get('tshirt-size'),
+                category: formData.get('category')
+            };
 
-            // Trigger certificate download
-            downloadCertificate();
+            fetch('https://script.google.com/macros/s/AKfycbzXp7QLYbV7Yal5RXvM644qtucBX6nRf1R3JbyoXH2srjxwmUSsYfSj5YQqie78UEdjQg/exec', {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams(data)
+                })
+                .then(response => {
+                    document.getElementById('success-message').style.display = 'block';
+
+                    // Automatically download the certificate
+                    const link = document.createElement('a');
+                    link.href = './assets/certificate.pdf'; // Replace with your certificate file path
+                    link.download = 'Certificate.pdf';
+                    link.click();
+                })
+                .catch(error => {
+                    console.error('Error!', error);
+                });
         });
-
-        function downloadCertificate() {
-            // Path to your predefined PDF certificate
-            const certificateUrl = './assets/certificate.pdf';
-
-            // Create an invisible link element and click it to download the PDF
-            const link = document.createElement('a');
-            link.href = certificateUrl;
-            link.download = 'certificate.pdf';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
     </script>
+
 </body>
 
 </html>
