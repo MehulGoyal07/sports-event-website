@@ -47,7 +47,7 @@
             <img src="assets/header.png" alt="header" />
         </div>
         <div class="header__content">
-            <h1>RUN FOR WAGHOLI 2024 <span>WATER</span><br><span style="color: #06038D;">TRAFFIC</span> <span style="color: #046A38;">DRAINAGE</span>.</h1>
+            <h1>RUN FOR WAGHOLI 2024 <span>WATER | </span><span style="color: #06038D;">TRAFFIC|</span> <span style="color: #046A38;">DRAINAGE</span>.</h1>
             <p class="section__description">
                 <ul>
                     <li> Date: 25th August 2024 📅</li>
@@ -73,19 +73,14 @@
                     <label for="name">Full Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter your full name" required>
 
-                    <label for="gender">Gender</label>
-                    <select id="gender" name="gender" required>
-                        <option value="" disabled selected>-- Select Gender --</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-
                     <label for="age">Enter your Address</label>
                     <input type="text" id="age" name="age" placeholder="Enter your Address" required>
 
                     <label for="contact">Contact Number</label>
                     <input type="tel" id="contact" name="contact" placeholder="Enter your contact number" required>
+
+                    <label for="email">Email (Optional)</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address">
 
                     <label for="dob">DOB</label>
                     <input type="date" id="dob" name="dob" placeholder="Enter your DOB" required>
@@ -100,6 +95,15 @@
                         <option value="XXL">Double Extra Large (XXL)</option>
                         <option value="XXXL">Triple Extra Large (XXXL)</option>
                     </select>
+
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender" required>
+                        <option value="" disabled selected>-- Select Gender --</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+
                     <button type="submit" class="submit-btn">Run for Wagholi</button>
                     <p id="success-message" class="success-message">Successfully registered! Your certificate is being downloaded.</p>
                 </form>
@@ -257,12 +261,13 @@
                 name: formData.get('name'),
                 age: formData.get('age'),
                 contact: formData.get('contact'),
+                email: formData.get('email') || '', // Optional field
                 dob: formData.get('dob'),
                 'tshirt-size': formData.get('tshirt-size'),
                 gender: formData.get('gender')
             };
 
-            fetch('https://script.google.com/macros/s/AKfycbx7xRgKr8PYt2aR2u_zTo_J5naIsCkdiT4G_mPZDFpFhpBGpNOBC87WKrLAv9uBntdY/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbz9dQSwZmm-CnAUAELRY_YMis_vo075Da0VW13Nr-Ouim16KcxIAusOfotMq4lNCySU/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: {
@@ -284,6 +289,7 @@
                 });
         });
     </script>
+
 
 
 </body>
