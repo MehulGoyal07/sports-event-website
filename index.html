@@ -11,6 +11,16 @@
     <title>Marathon website</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7JGX90X8Y7"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        .loading-message {
+            display: none;
+            color: #007bff;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -47,13 +57,13 @@
             <img src="assets/header.png" alt="header" />
         </div>
         <div class="header__content">
-            <h1>RUN FOR WAGHOLI 2024 <span>WATER</span><br><span style="color: #06038D;">TRAFFIC</span> <span style="color: #046A38;">DRAINAGE</span>.</h1>
+            <h1>RUN FOR WAGHOLI 2024 <span>WATER | </span><span style="color: #06038D;">TRAFFIC|</span> <span style="color: #046A38;">DRAINAGE</span>.</h1>
             <p class="section__description">
                 <ul>
                     <li> Date: 25th August 2024 📅</li>
                     <li> Time: 6:00 AM ⏰</li>
-                    <li> Starting Point: Wageshwar Temple Rd, Wagholi, 📍</li>
-                    <li> End Point: Oxy Primo Parking, Gate No. 559, Bakori Phata, Pune Nagar Road, Wagholi 🏁</li>
+                    <li> Starting Point: Abhishek Lawns, near Wageshwar Temple, Pune Nagar Rd, Wagholi📍</li>
+                    <li> End Point: Datta Krupa Parking, Bakori Phata, opposite Lexicon School, Pune Nagar Rd, Wagholi` 🏁</li>
                 </ul>
             </p>
             <br>
@@ -106,6 +116,7 @@
 
                     <button type="submit" class="submit-btn">Run for Wagholi</button>
                     <p id="success-message" class="success-message">Successfully registered! Your certificate is being downloaded.</p>
+                    <p id="loading-message" class="loading-message">Generating your certificate, please wait...</p>
                 </form>
             </div>
 
@@ -128,6 +139,13 @@
                 <p>
                     Get ready for an exciting marathon event on 25th August 2024, starting at 6:00 AM in the vibrant locale of Wagholi, Maharashtra. Mark this date in your calendar and join us for a memorable day of fitness and fun. The event promises a lively atmosphere
                     and a well-organized experience, ensuring you have an unforgettable time.
+                    <ul style="font-weight: 400;">
+                        <li>Age catagory</li>
+                        <li>1. 14 to 18 years 🎓👧</li>
+                        <li>2. 18 to 24 years 🎉👫</li>
+                        <li>3. 25 to 44 years 💼👩‍👧</li>
+                        <li>4. 45 years and above 👴🏻👵🏻</li>
+                    </ul>
                 </p>
             </div>
             <div class="special__card">
@@ -140,9 +158,8 @@
             <div class="special__card">
                 <h4>Participant Benefits</h4>
                 <p>
-                    As a participant, you’ll enjoy a range of exclusive benefits, including a free t-shirt for the first 2000 registrants and an OTG pen drive. Along the route, we’ll provide refreshing water stations, lemonade, glucose drinks, and snacks. Your safety is
-                    our priority with ambulances, medical points, and portable toilets available. Plus, immerse yourself in the fun with Zumba sessions, Arabic performances, and exciting prize distributions for winners. Celebrate your achievement with
-                    us and make lasting memories!
+                    As a participant, you’ll enjoy a range of exclusive benefits, including a free t-shirt for the first 2000 registrants. Along the route, we’ll provide refreshing water stations, lemonade, glucose drinks, and snacks. Your safety is our priority with ambulances,
+                    medical points, and portable toilets available. Plus, immerse yourself in the fun with Zumba sessions, Arabic performances, and exciting prize distributions for winners. Celebrate your achievement with us and make lasting memories!
                 </p>
             </div>
         </div>
@@ -229,6 +246,9 @@
                 <ul class="footer__links">
                     <li>Email: Runforwagholi@gmail.com</li>
                     <li>Phone: +91 9834103430</li>
+                    <li>Atharva Taur- +91 70382 51051</li>
+                    <li>Pandit Appa Darekar- +91 99234 39444</li>
+                    <li>Subhash Gavhane- +91 96890 77373</li>
                     <li>Address: Wagholi, Maharashtra</li>
                 </ul>
             </div>
@@ -253,43 +273,64 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
     <script>
-        document.getElementById('registration-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-            const formData = new FormData(this);
-            const data = {
-                name: formData.get('name'),
-                age: formData.get('age'),
-                contact: formData.get('contact'),
-                email: formData.get('email') || '', // Optional field
-                dob: formData.get('dob'),
-                'tshirt-size': formData.get('tshirt-size'),
-                gender: formData.get('gender')
+            var formData = {
+                name: document.getElementById('name').value,
+                address: document.getElementById('age').value,
+                contact: document.getElementById('contact').value,
+                dob: document.getElementById('dob').value,
+                tshirtSize: document.getElementById('tshirt-size').value,
+                gender: document.getElementById('gender').value,
+                email: document.getElementById('email').value
             };
 
-            fetch('https://script.google.com/macros/s/AKfycbxMlJIuS6ilwzhP_dF9BHtr5BjhV6hDdhhpc2Skcqc4h-D-U031tiJaJ4rotoI9B3MV/exec', {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: new URLSearchParams(data)
-                })
-                .then(response => {
-                    document.getElementById('success-message').style.display = 'block';
+            // Show loading message
+            document.getElementById('loading-message').style.display = 'block';
 
-                    // Automatically download the certificate
-                    const link = document.createElement('a');
-                    link.href = './assets/certificate.pdf'; // Replace with your certificate file path
-                    link.download = 'Certificate.pdf';
-                    link.click();
+            fetch('https://script.google.com/macros/s/AKfycbyY-tMKbiRd-uxRSqIpNeOfHwjP8f25wzq5jPKGTxJzkIRvZQxHjqbC71gupjW_NkV6/exec', {
+                    method: 'POST',
+                    body: JSON.stringify(formData),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    generateCertificate(data.name, data.chestNumber);
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('loading-message').style.display = 'none'; // Hide loading message
                 })
                 .catch(error => {
-                    console.error('Error!', error);
+                    console.error('Error!', error.message);
+                    document.getElementById('loading-message').style.display = 'none'; // Hide loading message on error
                 });
         });
-    </script>
 
+        async function generateCertificate(name, chestNumber) {
+            const {
+                jsPDF
+            } = window.jspdf;
+
+            // Create a new jsPDF instance
+            const doc = new jsPDF();
+
+            // Load and add background image to PDF
+            const img = new Image();
+            img.src = './assets/certificate.jpg'; // Certificate background image path
+            img.onload = function() {
+                doc.addImage(img, 'PNG', 0, 0, 210, 297); // Adjust size and position as needed
+
+                // Add Name and Chest Number in a single line
+                doc.setFontSize(30);
+                doc.setTextColor(0, 0, 0); // White text
+                doc.text(`${name} - ${chestNumber}`, 125, 145, {
+                    align: 'center'
+                });
+
+                // Save the PDF
+                doc.save('Certificate_' + name + '.pdf');
+            };
+        }
+    </script>
 
 
 </body>
