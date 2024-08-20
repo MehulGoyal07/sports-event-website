@@ -275,7 +275,8 @@
     <script>
         document.getElementById('registration-form').addEventListener('submit', function(e) {
             e.preventDefault();
-
+            var submitButton = document.querySelector('button.submit-btn');
+            submitButton.disabled = true; // Disable the button
             var formData = {
                 name: document.getElementById('name').value,
                 address: document.getElementById('age').value,
